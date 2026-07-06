@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "demo": {
+      "disabled": false,
+      "tools": [
+        {
+          "name": "demo_release_policy",
+          "description": "Return the fixed release policy for the demo. Use this when asked for MCP evidence, release policy, or external project information.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "topic": {
+                "type": "string",
+                "description": "The release demo topic."
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
