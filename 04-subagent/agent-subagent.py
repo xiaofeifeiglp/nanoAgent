@@ -20,7 +20,7 @@ MEMORY_FILE = "agent_memory.md"
 
 def read(path, offset=None, limit=None):
     try:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf8") as f:
             lines = f.readlines()
         start = offset if offset else 0
         end = start + limit if limit else len(lines)
@@ -36,7 +36,7 @@ def write(path, content):
         os.makedirs(
             os.path.dirname(path) if os.path.dirname(path) else ".", exist_ok=True
         )
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf8") as f:
             f.write(content)
         return f"Successfully wrote to {path}"
     except Exception as e:
@@ -45,11 +45,11 @@ def write(path, content):
 
 def edit(path, old_string, new_string):
     try:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf8") as f:
             content = f.read()
         if content.count(old_string) != 1:
             return f"Error: old_string must appear exactly once (found {content.count(old_string)})"
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf8") as f:
             f.write(content.replace(old_string, new_string))
         return f"Successfully edited {path}"
     except Exception as e:
