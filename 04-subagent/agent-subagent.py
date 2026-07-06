@@ -112,7 +112,7 @@ def subagent(role, task):
     sub_tools = [t for t in tools if t["function"]["name"] != "subagent"]
 
     for _ in range(10):
-        response_message = send_messages(sub_messages, tools)
+        response_message = send_messages(sub_messages, sub_tools)
         sub_messages.append(response_message)
 
         if not response_message.tool_calls:
